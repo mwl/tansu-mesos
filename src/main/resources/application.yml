@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Tansu Scheduler
+
+mesos:
+#  command: sleep 600
+  resources:
+#    distinctSlave: true
+    count: 3
+    cpus: 0.1
+    mem: 64
+    ports:
+      tansu-http-port:
+        host: ANY
+  docker:
+    image: shortishly/tansu:0.21.0
+    network: HOST
+  environment:
+    SHELLY_ENABLED: false
