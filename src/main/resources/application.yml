@@ -3,6 +3,8 @@ spring:
     name: Tansu Scheduler
 
 mesos:
+  framework:
+    name: tansu-${random.value}
 #  command: sleep 600
   resources:
 #    distinctSlave: true
@@ -13,7 +15,8 @@ mesos:
       tansu-http-port:
         host: ANY
   docker:
-    image: shortishly/tansu:0.21.0
+    image: shortishly/tansu:0.22.0
     network: HOST
   environment:
+    TANSU_ENVIRONMENT: ${random.value}
     SHELLY_ENABLED: false
